@@ -1,10 +1,9 @@
 uvicorn app.main:app --reload
 
 
-1. main.py - Le Point de Départ
-C'est le fichier principal qui démarre toute l'application. Il :
+1. main.py - 
 Lance l'application
-Configure qui peut accéder à votre API (les règles CORS)
+Configure qui peut accéder à l'API (les règles CORS)
 Définit les routes principales
 
 2. Les Routes (routes/places.py)
