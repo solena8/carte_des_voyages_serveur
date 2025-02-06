@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
-from app.models.places import Place
-from app.schemas.places import PlaceCreate
+from app.models.model_places import ModelPlace
+from app.schemas.schema_places import SchemaPlaceCreate
 
-def create_new_place(db: Session, place: PlaceCreate):
-    db_place = Place(
+def create_new_place(db: Session, place: SchemaPlaceCreate):
+    db_place = ModelPlace(
         name=place.name,
         date=place.date,
         city=place.city,

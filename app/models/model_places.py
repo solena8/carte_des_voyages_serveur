@@ -3,7 +3,7 @@ from datetime import datetime
 from app.database import Base
 
 
-class Place(Base):
+class ModelPlace(Base):
     __tablename__ = "places"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -14,4 +14,5 @@ class Place(Base):
     latitude = Column(Float, index=True)
     longitude = Column(Float, index=True)
     image = Column(LargeBinary)
+
 

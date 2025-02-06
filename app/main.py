@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import places
-from app.models.places import Base
+from app.api.routes import routes_places
+from app.models.model_places import Base
 from app.database import engine
 
 Base.metadata.create_all(bind=engine, checkfirst=True)
@@ -16,4 +16,4 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(places.router, prefix="/places", tags=["places"])
+app.include_router(routes_places.router, prefix="/places", tags=["places"])
