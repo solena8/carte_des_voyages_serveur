@@ -6,7 +6,7 @@ from app.dependencies import get_db
 from app.models.model_places import ModelPlace
 from fastapi import Depends, status, HTTPException
 
-router = APIRouter() # permet de structurer le projet en plusieurs fichiers et séparer les fonctionnalités :
+router = APIRouter()  # permet de structurer le projet en plusieurs fichiers et séparer les fonctionnalités :
 
 
 @router.post("/", response_model=schemas.SchemaPlaceCreate)
@@ -27,3 +27,10 @@ def delete_place(id: int, db: Session = Depends(get_db)):
     db.delete(place)
     db.commit()
     return {"message": "SchemaPlace deleted successfully"}
+
+
+@router.get("/api/stats")
+def get_stats(db: Session = Depends(get_db)):
+    total_entries = db.query(ModelPlace).count()
+    unique_countries = db.query(ModelPlace.country).distinct().count()
+    return {"totalEntries": total_entries, "uniqueCountries": unique_countries}
